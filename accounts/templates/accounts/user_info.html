@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="alert alert-primary" role="alert">
+  <a href="{% url 'movie_review:movie_select' %}" class="text-dark"> 좋아하는 영화를 골라보세요</a>
+</div>
+<hr>
+  
+<h1>{{user_p}} 님이 좋아하는 영화</h1>
+
+<hr>
+<div class="row">
+  {% for movie in user_p.like_movies.all %}
+    <div class="card col-3" style="width: 18rem;">
+      <a href="{% url 'movie_review:movie_detail' movie.id %}"><img src="{{movie.img_url}}" class="card-img-top" alt="..." style="height: 20rem;"></a>
+      
+      <div class="card-body">
+        <h5 class="card-title text-center">{{movie.title}}</h5>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

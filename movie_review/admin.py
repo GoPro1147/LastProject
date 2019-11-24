@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Movie, Actor, Genre, Director
+from .models import Movie, Actor, Genre
 # Register your models here.
 
 admin.site.register(Movie)

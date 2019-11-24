@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block body %}
   <div class="jumbotron">
     <div class="row">
       <div class="d-inline-flex align-items-start">
         <div class="d-inline-flex mx-3">
           <img src="{{movie.img_url}}" alt="" style="width: 26rem;">
+          <div class="d-block mx-3">
+            <h1 class="display-4">{{movie.title}}</h1>
+            <h2>gg</h2>
+            <a href="{% url 'movie_review:like' movie.id %}" class="btn btn-primary"> 좋아요 </a>
+          </div>        
         </div>
       </div>
       <div class="mx-3">
-        <h1 class="display-4">{{movie.title}}</h1>
+        
         <h3 class="my-3"> 줄거리 </h3>
         <p>{{movie.description}}</p>
         <hr>
@@ -31,6 +37,20 @@
         </div>
       </div>
     </div>
+    <hr>
+    <div>
+      <form action="{% url 'movie_review:create_review' movie.id %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="작성" class="btn btn-primary">
+      </form>
+    </div>
+    {% for review in movie.review_set.all %}
+      <div class="d-flex justify-content-between">
+        <span>{{review.content}}</span>
+        <span>작성자 : {{review.user}}</span>
+      </div>
+    {% endfor %}
     
   </div>
 {% endblock %}

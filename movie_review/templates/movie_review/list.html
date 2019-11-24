@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1 class="text-center">영화 목록</h1>
+<div class="row">
+  {% for movie in movie_list %}
+    <div class="card col-3 my-1" style="width: 18rem; border: none;">
+      <a href="{% url 'movie_review:movie_detail' movie.id %}" class="text-dark">
+        {% if movie in user.like_movies.all %}
+        <div>
+          <img src="{{movie.img_url}}" class="card-img-top m-2" alt="..." style="background-color:aqua;">
+        </div>
+        {% else %}
+        <div>
+          <img src="{{movie.img_url}}" class="card-img-top m-2" alt="...">
+        </div>
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}}</h5>
+        </div>
+      </a>    
+    </div>
+    
+  {% endfor %}
+</div>
+{% endblock %}

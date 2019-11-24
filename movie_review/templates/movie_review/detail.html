@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+  <div class="jumbotron">
+    <div class="row">
+      <div class="d-inline-flex align-items-start">
+        <div class="d-inline-flex mx-3">
+          <img src="{{movie.img_url}}" alt="" style="width: 26rem;">
+        </div>
+      </div>
+      <div class="mx-3">
+        <h1 class="display-4">{{movie.title}}</h1>
+        <h3 class="my-3"> 줄거리 </h3>
+        <p>{{movie.description}}</p>
+        <hr>
+        <h4>출연 배우</h4>
+        <div class="row">
+          {% for actor in movie.actors.all %}
+            <div class="card col-3" style="width: 10rem;">
+              <a href="{% url 'movie_review:actor_detail' actor.id %}">
+                <div class="card-body text-dark">
+                  <div class="text-center">
+                    <img class="rounded-circle text-center" src="{{actor.img_url}}" alt="" width:75 height: 75>
+
+                  </div>
+                  <h3 class="text-center">{{actor.name}}</h3>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+{% endblock %}

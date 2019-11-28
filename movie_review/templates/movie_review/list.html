@@ -1,25 +1,72 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block body %}
-<h1 class="text-center">영화 목록</h1>
-<div class="row">
-  {% for movie in movie_list %}
-    <div class="card col-3 my-1" style="width: 18rem; border: none;">
-      <a href="{% url 'movie_review:movie_detail' movie.id %}" class="text-dark">
-        {% if movie in user.like_movies.all %}
-        <div>
-          <img src="{{movie.img_url}}" class="card-img-top m-2" alt="..." style="background-color:aqua;">
-        </div>
-        {% else %}
-        <div>
-          <img src="{{movie.img_url}}" class="card-img-top m-2" alt="...">
-        </div>
-        {% endif %}
-        <div class="card-body">
-          <h5 class="card-title">{{movie.title}}</h5>
-        </div>
-      </a>    
+<div class="container">
+
+  <h1 class="text-center my-5" id="songmyung">Movie List</h1>
+  <div class="input-group my-2 d-flex justify-content-center my-2">
+    <h3 id="songmyung" class="mr-1">Genre</h3>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{gen_id}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for genre in genres %}
+          <a class="dropdown-item" href="{% url 'movie_review:movie_select' genre.id %}">{{genre.genreNm}}</a>
+        {% endfor %}
+      </div>
     </div>
+  </div>
+
+  <div class="row my-4" style="height: 5vh;">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form action="{% url 'movie_review:search' %}">
+        <input type="text" class="form-control" placeholder="영화를 검색해 주세요" name="keyword">
+        
+      </form>
+    </div>
+    <div class="col-3"></div>
     
-  {% endfor %}
+  </div>
+  
+  <div class="row">
+    {% for movie in movie_list %}
+      <div class="card col-sm-12 col-md-6 col-lg-4" style="width: 18rem; border: none;">
+        <a href="{% url 'movie_review:movie_detail' movie.id %}" class="text-dark" style="text-decoration:none">
+          <div style="position: relative;">
+            <div>
+              <img src="{{movie.img_url}}" data-id="{{movie.id}}" class="card-img-top m-2 " alt="...">
+            </div>
+            <div style="position: absolute; left:40%; bottom:45%;">
+              <h3 id="p_{{movie.id}}" style="display: none;">  </h3>
+              <h3 id="p2_{{movie.id}}" style="display: none;">  </h3>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title d-inline" id="noto">{{movie.title}}
+            {% if movie in user.like_movies.all %}
+              <h4 class="d-inline" style="color: chocolate;"><i class="fas fa-heart"></i></h4>  
+            {% endif %}
+            </h5>
+            <hr>
+            
+            {% if user.is_superuser %}
+              <form action="{% url 'movie_review:movie_update' movie.id %}" class="d-inline-block">
+                <input type="submit" value="수정" class="btn btn-warning">
+              </form>
+              <form action="{% url 'movie_review:movie_delete' movie.id %}" class="d-inline-block">
+                <input type="submit" value="삭제" class="btn btn-danger">
+              </form>
+            {% endif %}
+          </div>
+        </a>    
+      </div>
+    {% endfor %}
+    
+  </div>
 </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{% static 'movie_review/hover.js' %}"></script>
+
 {% endblock %}

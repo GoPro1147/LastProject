@@ -1,0 +1,25 @@
+<div class="list-group mb-5" id="noto">
+  {% for review in user_p.review_set.all %}
+    <span class="list-group-item">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 style="font-weight:700;">{{review.movie.title}}</h5>
+        <h5 class="mb-1">{{review.content}}</h5>
+        <small>⭐ {{review.rating}}</small>
+      </div>
+    </span>
+    <div class="d-inline">
+      <form action="{% url 'movie_review:update_review' review.movie.id review.id %}" class="d-inline mx-1">
+        {% csrf_token %}
+        {% if user.is_superuser %}
+          <input type="submit" value="제재" class="btn btn-danger">
+        {% else %}
+          <input type="submit" value="수정" class="btn btn-warning">
+        {% endif %}
+      </form>
+      <form action="{% url 'movie_review:delete_review' review.movie.id review.id %}" class="d-inline-block" method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger " value="삭제">
+      </form>
+    </div>
+  {% endfor %}
+</div>

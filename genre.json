@@ -1,6 +1,13 @@
 [
 	{
 		"model": "movie_review.genre",
+		"pk": 0,
+		"fields": {
+			"genreNm": "전체보기"
+		}
+	},
+	{
+		"model": "movie_review.genre",
 		"pk": 1,
 		"fields": {
 			"genreNm": "\ucf54\ubbf8\ub514"

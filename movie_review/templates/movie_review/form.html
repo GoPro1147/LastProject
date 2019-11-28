@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="수정" class="btn btn-warning">
+    </form>
+</div>
+{% endblock %}

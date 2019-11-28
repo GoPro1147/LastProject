@@ -1,0 +1,226 @@
+[
+	{
+		"model": "movie_review.director",
+		"pk": 10051812,
+		"fields": {
+			"name": "요아킴 뢰닝",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F108%2F20130114160520441.jpeg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10080327,
+		"fields": {
+			"name": "토드 필립스",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F116%2F201909241144466131.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20112006,
+		"fields": {
+			"name": "김한결",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F132%2F201107151655384541.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10028999,
+		"fields": {
+			"name": "박용집",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2Fportrait%2F201909%2F20190916184410387.png&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20304812,
+		"fields": {
+			"name": "용수",
+			"img_url": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgmovie.naver.net%2Fmdi%2Fpi%2F000004232%2FPM423270_154529_000.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10056462,
+		"fields": {
+			"name": "이안",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F184%2F201404141821412041.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10060479,
+		"fields": {
+			"name": "장적사",
+			"img_url": "https://ssl.pstatic.net/static/movie/2012/06/dft_img111x139.png"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10090757,
+		"fields": {
+			"name": "마누엘 J. 가르시아",
+			"img_url": "https://ssl.pstatic.net/static/movie/2012/06/dft_img111x139.png"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10081111,
+		"fields": {
+			"name": "톰 하퍼",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F53%2F201910081537595021.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10061220,
+		"fields": {
+			"name": "전계수",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F195%2F20110421145011691.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20153842,
+		"fields": {
+			"name": "김도영",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2Fportrait%2F201211%2F20121116123203158.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20185740,
+		"fields": {
+			"name": "애드리언 그런버그",
+			"img_url": "https://ssl.pstatic.net/static/movie/2012/06/dft_img111x139.png"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10028292,
+		"fields": {
+			"name": "바실리 로벤스키",
+			"img_url": "https://ssl.pstatic.net/static/movie/2012/06/dft_img111x139.png"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10078880,
+		"fields": {
+			"name": "토르비욘 크리스토퍼센",
+			"img_url": "https://ssl.pstatic.net/static/movie/2012/06/dft_img111x139.png"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20120502,
+		"fields": {
+			"name": "데이비드 미쇼",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F120%2F201910161158248231.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10081776,
+		"fields": {
+			"name": "팀 밀러",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F179%2F201910221349145471.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10040653,
+		"fields": {
+			"name": "신카이 마코토",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F162%2F201611041138073111.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10040653,
+		"fields": {
+			"name": "카를로스 구티에레스 메드라노",
+			"img_url": "https://ssl.pstatic.net/static/movie/2012/06/dft_img111x139.png"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10040653,
+		"fields": {
+			"name": "팀 맬트비",
+			"img_url": "https://ssl.pstatic.net/static/movie/2012/06/dft_img111x139.png"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10082481,
+		"fields": {
+			"name": "차야놉 분프라콥 ",
+			"img_url": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgmovie.naver.net%2Fmdi%2Fpi%2F000002948%2FPM294848_143251_000.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20175841,
+		"fields": {
+			"name": "리건",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F152%2F201603231846083291.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20112883,
+		"fields": {
+			"name": "그렉 티어난",
+			"img_url": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgmovie.naver.net%2Fmdi%2Fpi%2F000002131%2FPM213181_164941_000.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10022775,
+		"fields": {
+			"name": "마이크 플래너건",
+			"img_url": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgmovie.naver.net%2Fmdi%2Fpi%2F000002952%2FPM295230_115652_000.png&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10062253,
+		"fields": {
+			"name": "정지영",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F129%2F20160620115527461.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 10020677,
+		"fields": {
+			"name": "릭 로먼 워",
+			"img_url": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgmovie.naver.net%2Fmdi%2Fpi%2F000000072%2FPM7264_135838_000.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20120723,
+		"fields": {
+			"name": "루벤 플레셔",
+			"img_url": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgmovie.naver.net%2Fmdi%2Fpi%2F000001688%2FPM168887_185908_000.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20189542,
+		"fields": {
+			"name": "임대형",
+			"img_url": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgmovie.naver.net%2Fmdi%2Fpi%2F000003291%2FPM329112_094539_000.jpg&type=u111_139&quality=95"
+		}
+	},
+	{
+		"model": "movie_review.director",
+		"pk": 20191566,
+		"fields": {
+			"name": "이상호",
+			"img_url": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F196%2F201210091657186271.jpg&type=u111_139&quality=95"
+		}
+	}
+]

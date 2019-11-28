@@ -1,4 +1,32 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1></h1>
+<div id="bgup" class="d-flex justify-content-center align-items-center" style="height: 40vh; ">
+  <h1 id="songmyung" style="color: chocolate;">SAFFY CINEMA</h1>
+</div>
+<div id="bgdn" style="height: 40vh;">
+  <div class="row" style="height: 4vh;">
+    <div class="col-4"></div>
+    <div class="col-4 d-flex justify-content-center p-0">
+      <form action="{% url 'movie_review:search' %}" class="w-100">
+        <input type="text" class="form-control" placeholder=" 배우, 작품등을 검색해보세요" name="keyword">    
+      </form>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  <div class="row" style="height: 2vh;">
+    <div class="col-4"></div>
+    <div class="col-4 d-flex justify-content-center">
+      
+    </div>
+    <div class="col-4"></div>
+  </div>
+  <div class="row" style="height: 2vh;">
+    <div class="col-4"></div>
+    <div class="col-4 d-flex justify-content-center" id="nanum" style="color: chocolate;">
+        <h3>영화를 검색하고 평점을 남겨보세요</h3>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  
+</div>
 {% endblock %}

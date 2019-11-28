@@ -1,5 +1,6 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,35 +9,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}" type="text/css">
     <title>가제(왓챠)</title>
-  
+    <script src="https://kit.fontawesome.com/604c83e33e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Pen+Script|Nanum+Gothic+Coding|Song+Myung|Noto+Sans+KR|Stylish|Yeon+Sung&display=swap" rel="stylesheet">
+    <style>
+    #bgup {
+      background-image:url("{% static 'wall2.jpg' %}");
+    }
+    </style>
+    
 </head>
 <body>
-  <nav class="navbar  navbar-light bg-light">
-    <div class="d-flex justify-content-start">
-      <a class="navbar-brand" href="{% url 'movie_review:index' %}">Home</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand " href="{% url 'movie_review:index'%}" id="songmyung">SSAFY CINEMA</a>
 
-    </div>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button> -->
-    <div class="d-flex justify-content-end">
-      {% if user.is_authenticated %}
-        <form action="{% url 'accounts:user_info' %}" method="POST">
-          {% csrf_token %}
-          <input type="submit" class="btn btn-link" value="{{user}}">
-        </form>
-        <a class="nav-item nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
-      {% else %}
-        <a class="nav-item nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
-        <a class="nav-item nav-link" href="{% url 'accounts:login' %}">로그인</a>
-      {% endif %}
-      
+    </button>
+    
+    <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'movie_review:movie_select' 0 %}">Movie List</a> 
+        {% if user.is_superuser %}
+          <a class="nav-item nav-link" href="{% url 'accounts:login' %}">관리자님 환영합니다.</a>
+          <a class="nav-item nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+        {% else %}
+          
+          {% if user.is_authenticated %}
+            <form action="{% url 'accounts:user_info' user.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" class="nav-item nav-link btn btn-link" value="{{user}}">
+            </form>
+            <a class="nav-item nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+          {% else %}
+            <a class="nav-item nav-link" data-toggle="modal" href="#exampleModal">SignUp</a>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">회원 가입</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    
+                    </button>
+                  </div>
+                  <form action="{% url 'accounts:signup' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                      {% bootstrap_form signup_form %}
+                    </div>
+                    <div class="modal-footer">
+                      <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                  </form>
+                
+                </div>
+              </div>
+            </div>
+            <a class="nav-item nav-link" data-toggle="modal" href="#exampleModal2">LogIn</a>
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">LogIn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      
+                    </button>
+                  </div>
+                  <form action="{% url 'accounts:login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                      
+                      {% bootstrap_form login_form %}
+                    </div>
+                    <div class="modal-footer">
+                      <input type="submit" class="btn btn-primary" value="Login">
+                    </div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
     </div>
+
+
   </nav>
-  <div class="container my-3">
     {% block body %}
     {% endblock %}
-  </div>
 </body>
 </html>

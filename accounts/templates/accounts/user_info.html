@@ -1,23 +1,69 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="alert alert-primary" role="alert">
-  <a href="{% url 'movie_review:movie_select' %}" class="text-dark"> 좋아하는 영화를 골라보세요</a>
-</div>
-<hr>
-  
-<h1>{{user_p}} 님이 좋아하는 영화</h1>
+<div class="container">
+  {% if not user.is_superuser %}
+  <h3 class="m-5 d-flex justify-content-center" id="nanum" style="color: chocolate;">
+    <a href="{% url 'movie_review:movie_select' 0 %}" class="text-dark"> 🎬 클릭! 좋아하는 영화를 골라보세요 🎬</a>
+  </h3>
+  {% endif %}
+  <hr> 
 
-<hr>
-<div class="row">
-  {% for movie in user_p.like_movies.all %}
-    <div class="card col-3" style="width: 18rem;">
-      <a href="{% url 'movie_review:movie_detail' movie.id %}"><img src="{{movie.img_url}}" class="card-img-top" alt="..." style="height: 20rem;"></a>
-      
-      <div class="card-body">
-        <h5 class="card-title text-center">{{movie.title}}</h5>
+  <h3 id="songmyung" class="my-4">👍 {{user_p}} 님이 좋아하는 영화</h3>
+  <div class="row my-3">
+    {% for movie in user_p.like_movies.all %}
+      <div class="card col-sm-12 col-md-6 col-lg-4" style="width: 18rem; border: none;">
+        <a href="{% url 'movie_review:movie_detail' movie.id %}">
+          <img src="{{movie.img_url}}" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title text-center" id="noto">{{movie.title}}</h5>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <hr>
+  <h3 id="songmyung" class="my-4">📝 {{user_p}} 님이 남기신 한줄평</h3>  
+  {% for review in user_p.review_set.all %}
+    <div class="d-flex justify-content-between">
+      <div class="d-inline m-4">
+        <h5 style="font-weight:700;">{{review.movie.title}}</h5>
+        <h5 class="d-inline">{{review.content}}</h5>
+        <h5 class="d-inline">⭐️x{{review.rating}}</h5>
+      </div>
+      <div class="">
+        <form action="{% url 'movie_review:update_review' review.movie.id review.id %}" class="d-inline mx-1">
+          {% csrf_token %}
+          {% if user.is_superuser %}
+            <button type="submit" class="btn btn-info" >🔏</button>
+          {% else %}
+            <button type="submit" class="btn btn-warning">📝</button>
+          {% endif %}
+        </form>
+        <form action="{% url 'movie_review:delete_review' review.movie.id review.id %}" class="d-inline-block" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">❌</button>
+        </form>
       </div>
     </div>
   {% endfor %}
+
+
+
+  <hr>
+  <h3 id="songmyung" class="my-4">😊 {{user_p}} 님을 위한 추천 영화</h3>
+  <div class="row my-3">
+    {% for movie in recommend %}
+      <div class="card col-sm-12 col-md-6 col-lg-4" style="width: 18rem; border: none;">
+        <a href="{% url 'movie_review:movie_detail' movie.id %}"><img src="{{movie.img_url}}" class="card-img-top" ></a>
+        <div class="card-body">
+          <h5 class="card-title text-center" id="noto">{{movie.title}}</h5>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
+
+
 
 {% endblock %}

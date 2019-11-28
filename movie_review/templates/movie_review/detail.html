@@ -1,56 +1,95 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load bootstrap4 %}
 {% block body %}
-  <div class="jumbotron">
-    <div class="row">
-      <div class="d-inline-flex align-items-start">
-        <div class="d-inline-flex mx-3">
-          <img src="{{movie.img_url}}" alt="" style="width: 26rem;">
-          <div class="d-block mx-3">
-            <h1 class="display-4">{{movie.title}}</h1>
-            <h2>gg</h2>
-            <a href="{% url 'movie_review:like' movie.id %}" class="btn btn-primary"> 좋아요 </a>
-          </div>        
-        </div>
-      </div>
-      <div class="mx-3">
-        
-        <h3 class="my-3"> 줄거리 </h3>
-        <p>{{movie.description}}</p>
-        <hr>
-        <h4>출연 배우</h4>
-        <div class="row">
-          {% for actor in movie.actors.all %}
-            <div class="card col-3" style="width: 10rem;">
-              <a href="{% url 'movie_review:actor_detail' actor.id %}">
-                <div class="card-body text-dark">
-                  <div class="text-center">
-                    <img class="rounded-circle text-center" src="{{actor.img_url}}" alt="" width:75 height: 75>
 
-                  </div>
-                  <h3 class="text-center">{{actor.name}}</h3>
-                </div>
-              </a>
+
+<div class="container">
+    <div class="jumbotron my-5" id="noto">
+      <div class="row">
+        <div class="d-inline-flex align-items-start col-sm-12">
+          <div class="d-inline-flex mx-3 ">
+            <div>
+              <img src="{{movie.img_url}}" class="col-sm-12 col-md-6 col-lg-4" style="max-width: 100%; height: auto;">
             </div>
-          {% endfor %}
-          
+            <div class="d-block mx-3 col-md-6 col-lg-8">
+              <h3 style="font-weight: 700;">{{movie.title}}</h3>
+              <hr>
+              <p>개봉 : {{movie.openDt}}<p>
+              <p>장르 :
+                {% for genre in movie.genres.all %}
+                  {{genre}}
+                {% endfor %}
+              </p>
+              <hr>
+              <h5>줄거리</h5>
+              <p  class="my-3">
+                {{movie.description}}
+              </p>
+              <h4 class="d-flex justify-content-center mt-5">⭐  {{avg_rating}}</h4>
+              <div class="d-flex justify-content-center mt-4">
+                <div class="d-inline-flex">
+                  {% if user in movie.like_users.all %}
+                    <h3 style="color: chocolate;"><i data-id="{{movie.id}}" class="fas fa-heart"></i></h3>
+                  {% else %}
+                    <h3 style="color: chocolate;"><i data-id="{{movie.id}}" class="far fa-heart"></i></h3>
+                  {% endif %}
+                </div>
+                
+                <h4 class="d-inline-flex mx-2" id="nanum">{{movie.like_users.all.count}} 명이 좋아합니다</h4>
+
+              </div>
+            </div>        
+          </div>
         </div>
       </div>
+        <div class="mx-3">
+          <hr>
+          <h5 class="my-3">출연 배우</h5>
+          <div class="row mx-1">
+            {% for actor in movie.actors.all %}
+              <div class="card col-sm-12 col-md-6 col-lg-3" style="width: 10rem;">
+                <a href="{% url 'movie_review:actor_detail' actor.id %}">
+                  <div class="card-body text-dark">
+                    <div class="text-center">
+                      <img class="rounded-circle text-center" src="{{actor.img_url}}" alt="" width:75 height: 75>
+                    </div>
+                    <hr>
+                    <p class="text-center">{{actor.name}}</p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
     </div>
-    <hr>
+
     <div>
+      {% if user.is_authenticated %}
       <form action="{% url 'movie_review:create_review' movie.id %}" method="POST">
         {% csrf_token %}
         {% bootstrap_form form %}
         <input type="submit" value="작성" class="btn btn-primary">
       </form>
+      <hr>
+      {% endif %}
     </div>
-    {% for review in movie.review_set.all %}
-      <div class="d-flex justify-content-between">
-        <span>{{review.content}}</span>
-        <span>작성자 : {{review.user}}</span>
-      </div>
-    {% endfor %}
-    
-  </div>
+
+
+    <h4 style="font-weight: 700;"> 한줄평</h4>
+    <div class="list-group mb-5" id="noto">
+      {% for review in movie.review_set.all %}
+        <span class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{review.content}}</h5>
+            <small>⭐ {{review.rating}}</small>
+          </div>
+          <small>작성자: {{review.user}}</small>
+        </span>
+      {% endfor %}
+    </div>
+
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{% static 'movie_review/like.js' %}"></script>
 {% endblock %}

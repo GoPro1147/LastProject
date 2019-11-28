@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+  <h1 class="text-center my-5" id="songmyung"> Search Result </h1>
+  <div class="row mt-5" style="height: 5vh;">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form action="{% url 'movie_review:search' %}">
+        <input type="text" class="form-control" placeholder="영화/배우를 검색해주세요" name="keyword">
+      </form>
+    </div>
+    <div class="col-3"></div>
+  </div>
+ 
+  <h2 id="songmyung" class="mt-3"> Movie </h2>
+  <hr>
+  <div class="row">
+    {% for movie in movie_list %}
+      <div class="card col-3 col-sm-12 col-md-6 col-lg-4" style="width: 18rem; border: none;">
+        <a href="{% url 'movie_review:movie_detail' movie.id %}" class="text-dark" style="text-decoration:none">
+          {% if movie in user.like_movies.all %}
+          <div>
+            <img src="{{movie.img_url}}" class="card-img-top m-2 " alt="...">
+          </div>
+          {% else %}
+          <div>
+            <img src="{{movie.img_url}}" class="card-img-top m-2" alt="...">
+          </div>
+          {% endif %}
+          <div class="card-body text-center">
+            <h5 class="card-title" id="noto">{{movie.title}}</h5>
+            <p style="display:none">{{movie.genres.all}}</p>
+            {% if user.is_superuser %}
+              <form action="{% url 'movie_review:movie_update' movie.id %}" class="d-inline-block">
+                <input type="submit" value="수정" class="btn btn-warning">
+              </form>
+              <form action="{% url 'movie_review:movie_delete' movie.id %}" class="d-inline-block">
+                <input type="submit" value="삭제" class="btn btn-danger">
+              </form>
+            {% endif %}
+          </div>
+        </a>    
+      </div>
+    {% endfor %}
+
+    
+  </div>
+  <h2 id="songmyung" class="mt-3"> Actor </h2>
+  <hr>
+  <div class="row">
+    {% for actor in actor_list %}
+      <div class="card col-sm-12 col-md-6 col-lg-3" style="width: 18rem; border: none;">
+        <a href="{% url 'movie_review:actor_detail' actor.id %}" class="text-dark">
+          <div>
+            <img class="rounded-circle d-flex justify-content-center" src="{{actor.img_url}}" alt="" width:75 height: 75>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center" id="noto">{{actor.name}}</h5>
+          </div>
+        </a>    
+      </div>
+    {% endfor %}
+    
+  </div>
+</div>
+{% endblock %}

@@ -23,7 +23,7 @@ class Movie(models.Model):
     actors = models.ManyToManyField(Actor, related_name='filmography')
     mvdirector = models.CharField(max_length=200, blank=True)
     img_url = models.CharField(max_length=600, blank=True)
-    description = models.CharField(max_length=8000, blank=True)
+    description = models.TextField()
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
     
 

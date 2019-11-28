@@ -1,0 +1,34 @@
+#bgup {
+    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 80%;
+    min-width: 100%;
+  }
+  #bgdn {
+    position:relative;
+    top:-20;
+  }
+
+  #songmyung {
+    font-family: 'Song Myung', serif;
+  }
+
+  #noto {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  #nanum {
+    font-family: 'Nanum Pen Script', cursive;
+  }
+
+  #dohyeon {
+    font-family: 'Do Hyeon', sans-serif;
+  }
+
+  body {
+    font-family: 'Nanum Gothic Coding', monospace;
+  }

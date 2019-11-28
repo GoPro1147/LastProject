@@ -33,13 +33,13 @@
   <div class="row">
     {% for movie in movie_list %}
       <div class="card col-sm-12 col-md-6 col-lg-4" style="width: 18rem; border: none;">
-        <a href="{% url 'movie_review:movie_detail' movie.id %}" class="text-dark" style="text-decoration:none">
-          <div style="position: relative;">
+        <a href="{% url 'movie_review:movie_detail' movie.id %}" class="text-dark hover_test" style="text-decoration:none">
+          <div style="position: relative;" class="">
             <div>
               <img src="{{movie.img_url}}" data-id="{{movie.id}}" class="card-img-top m-2 " alt="...">
             </div>
             <div style="position: absolute; left:40%; bottom:45%;">
-              <h3 id="p_{{movie.id}}" style="display: none;">  </h3>
+              <h3 id="p_{{movie.id}}" style="display: none;">  </h3> 
               <h3 id="p2_{{movie.id}}" style="display: none;">  </h3>
             </div>
           </div>

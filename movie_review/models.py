@@ -23,7 +23,7 @@ class Movie(models.Model):
     actors = models.ManyToManyField(Actor, related_name='filmography')
     mvdirector = models.CharField(max_length=100, blank=True)
     img_url = models.CharField(max_length=500, blank=True)
-    description = models.CharField(max_length=500, blank=True)
+    description = models.CharField(max_length=1000, blank=True)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
     
 
@@ -32,7 +32,7 @@ class Movie(models.Model):
 
     
 class Review(models.Model):
-    content = models.CharField(max_length=300)
+    content = models.CharField(max_length=500)
     rating = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(10)])
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
